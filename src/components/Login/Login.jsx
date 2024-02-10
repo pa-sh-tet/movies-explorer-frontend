@@ -10,12 +10,22 @@ export default function Login() {
         <form className='login__form'>
           <div className="login__section">
             <h3 className='login__section-title'>E-mail</h3>
-            <input type="text" className='login__section-input' placeholder='Введите почту' />
+            <input type="email"
+            className='login__section-input'
+            placeholder='Введите почту'
+            minLength={2}
+            maxLength={50}
+            required />
             <span className='login__section-error'>Что-то пошло не так...</span>
           </div>
           <div className="login__section">
             <h3 className='login__section-title'>Пароль</h3>
-            <input type="text" className='login__section-input' placeholder='Введите пароль' />
+            <input type="password"
+            className='login__section-input'
+            placeholder='Введите пароль'
+            minLength={4}
+            maxLength={30}
+            required />
             <span className='login__section-error'>Что-то пошло не так...</span>
           </div>
           <button className='login__submit-button'>Войти</button>

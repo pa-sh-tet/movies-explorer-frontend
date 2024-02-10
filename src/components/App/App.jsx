@@ -13,11 +13,11 @@ import Profile from '../Profile/Profile';
 import Menu from '../Menu/Menu';
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [isMenuOpen, setMenuOpen] = React.useState(false);
 
-  const isLoggedIn = true;
+  // const isLoggedIn = true;
 
   const handleMenuClose = () => {
     setMenuOpen(false);

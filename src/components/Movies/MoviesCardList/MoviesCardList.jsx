@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 export default function MoviesCardList() {
   return (
     <section className='cardlist'>
-      <div className="cardlist__cards">
+      <ul className="cardlist__cards">
         <MoviesCard />
         <MoviesCard />
         <MoviesCard />
@@ -21,7 +21,7 @@ export default function MoviesCardList() {
         <MoviesCard />
         <MoviesCard />
         <MoviesCard />
-      </div>
+      </ul>
       <button className="cardlist__more-button">Ещё</button>
     </section>
   );

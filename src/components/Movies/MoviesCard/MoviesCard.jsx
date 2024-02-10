@@ -5,7 +5,7 @@ export default function MoviesCard() {
   const location = useLocation();
   
   return (
-    <div className='card'>
+    <li className='card'>
       <div className='card__image'></div>
       <div className="card__container">
         <h3 className='card__name'>33 слова о дизайне</h3>
@@ -15,6 +15,6 @@ export default function MoviesCard() {
         }
       </div>
       <p className='card__time'>1ч42м</p>
-    </div>
+    </li>
   );
 }

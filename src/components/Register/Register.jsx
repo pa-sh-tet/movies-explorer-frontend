@@ -10,17 +10,32 @@ export default function Register() {
         <form className='register__form'>
           <div className="register__section">
             <h3 className='register__section-title'>Имя</h3>
-            <input type="text" className='register__section-input' placeholder='Введите имя' />
+            <input type="text"
+              className='register__section-input'
+              placeholder='Введите имя'
+              minLength={2}
+              maxLength={30}
+              required />
             <span className='register__section-error'>Что-то пошло не так...</span>
           </div>
           <div className="register__section">
             <h3 className='register__section-title'>E-mail</h3>
-            <input type="text" className='register__section-input' placeholder='Введите почту' />
+            <input type="email"
+            className='register__section-input'
+            placeholder='Введите почту'
+            minLength={2}
+            maxLength={50}
+            required />
             <span className='register__section-error'>Что-то пошло не так...</span>
           </div>
           <div className="register__section">
             <h3 className='register__section-title'>Пароль</h3>
-            <input type="text" className='register__section-input' placeholder='Введите пароль' />
+            <input type="password"
+            className='register__section-input'
+            placeholder='Введите пароль'
+            minLength={4}
+            maxLength={30}
+            required />
             <span className='register__section-error'>Что-то пошло не так...</span>
           </div>
           <button className='register__submit-button'>Зарегистрироваться</button>

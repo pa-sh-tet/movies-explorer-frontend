@@ -1,14 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import React from 'react';
 
 export default function Navigation({ openMenu }) {
+  const location = useLocation();
+
   return (
     <nav className="header__navigation">
       <div className="header__links">
-        <Link to="/movies" className="header__movies link">
+        <Link to="/movies" className={`header__movies link ${location.pathname === "/movies" && 'header__link_active'}`}>
           Фильмы
         </Link>
-        <Link to="/saved-movies" className="header__saved-movies link">
+        <Link to="/saved-movies" className={`header__saved-movies link ${location.pathname === "/saved-movies" && 'header__link_active'}`}>
           Сохранённые фильмы
         </Link>
       </div>

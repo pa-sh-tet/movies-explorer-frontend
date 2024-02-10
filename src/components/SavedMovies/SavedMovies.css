@@ -18,6 +18,7 @@
 }
 
 .saved-movies__container {
+  padding: 0;
   margin: 80px 0 30px;
   width: 100%;
   display: grid;
