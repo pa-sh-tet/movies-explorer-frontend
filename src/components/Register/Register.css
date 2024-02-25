@@ -79,6 +79,7 @@
   margin: 6px 0 0;
   width: 100%;
   transition: .2s ease;
+  height: 10px;
 }
 
 .register__submit-button {

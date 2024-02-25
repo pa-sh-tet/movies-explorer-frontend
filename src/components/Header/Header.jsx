@@ -7,7 +7,7 @@ export default function Header ({ isLoggedIn, openMenu }) {
 
   return (
     <header className={`header ${location.pathname === '/' && 'header__main'}`}>
-      <Link to="/" className="header__logo link"></Link>
+      <Link to="/" className="header__logo link" />
       {isLoggedIn ? (
         <Navigation openMenu={openMenu} />
       ) : (
