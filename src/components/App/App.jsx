@@ -21,21 +21,16 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  
   const [searchMovies, setSearchMovies] = useState('');
   const [searchSaveMovies, setSearchSaveMovies] = useState('');
   const [movies, setMovies] = useState([]);
-
   const [isFind, setIsFind] = useState(true);
-
   const [currentUser, setCurrentUser] = useState({});
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [saveMovies, setSaveMovies] = useState([]);
   const [isShortFilmChecked, setIsShortFilmChecked] = useState(false);
   const [isShortSaveMoviesChecked, setIsShortSaveMoviesChecked] = useState(false);
-
   const [isLoading, setIsLoading] = useState(false);
-  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -113,10 +108,10 @@ function App() {
         if (res) {
           setIsSuccess(true);
           setIsInfoPopupOpen(true);
-          navigate("/signin", {replace: true});   
+          handleLogin(email, password)
         } else {
           setIsSuccess(false);
-          setIsInfoPopupOpen(true);    
+          setIsInfoPopupOpen(true);
         }
       })
       .catch((error) => {
@@ -130,10 +125,10 @@ function App() {
     auth.authorize(email, password)
       .then((res) => {
         localStorage.setItem('jwt', res.token);
-        setIsLoggedIn(true);        
+        setIsLoggedIn(true); 
       })
       .then(() => {
-        navigate("/");
+        navigate("/movies");
       })
       .catch((err) => {
         console.log(err);
@@ -155,9 +150,13 @@ function App() {
     mainApi.patchUserInfo(newUserInfo)
       .then((newData) => {
         setCurrentUser(newData);
+        setIsSuccess(true);
+        setIsInfoPopupOpen(true);
       })
       .catch((error) => {
         console.log(error);
+        setIsSuccess(false);
+        setIsInfoPopupOpen(true);
       });
   }
 
@@ -239,6 +238,7 @@ function App() {
                   savedMovies={saveMovies}
                   setIsShortFilmChecked={setIsShortFilmChecked}
                   isShortFilmChecked={isShortFilmChecked}
+                  setSaveMovies={setSaveMovies}
                 />
                 <ProtectedRouteElement 
                   element={Footer}
@@ -257,11 +257,13 @@ function App() {
                   element={SavedMovies}
                   isLoggedIn={isLoggedIn}
                   saveMovies={saveMovies}
+                  setSaveMovies={setSaveMovies}
                   onSearchMovies={handleSearchSaveMovies}
                   searchMovies={searchSaveMovies}
                   setSearchMovies={setSearchSaveMovies}
                   onMovieDelete={handleMovieDelete}
                   isFind={isFind}
+                  setIsFind={setIsFind}
                   isLoading={isLoading}
                   isShortSaveMoviesChecked={isShortSaveMoviesChecked}
                   setIsShortSaveMoviesChecked={setIsShortSaveMoviesChecked}

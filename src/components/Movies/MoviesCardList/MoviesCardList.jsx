@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
+import { mainApi } from '../../../utils/MainApi';
+import { useLocation } from 'react-router-dom';
+
 
 export default function MoviesCardList({
   isFind,
@@ -9,13 +12,24 @@ export default function MoviesCardList({
   movies,
   savedMovies,
   isLoading,
-  // isShortFilmChecked
+  setSaveMovies
 }) {
   const [moviesToLoad, setMoviesToLoad] = useState(0);
   const [extraMoviesToLoad, setExtraMoviesToLoad] = useState(0);
   const [isActivePreloader, setIsActivePreloader] = useState(false);
   const [moviesToList, setMoviesToList] = useState([]);
+  const location = useLocation();
 
+  useEffect(() => {
+    mainApi.getSaveMovies()
+      .then(res => {
+        setSaveMovies(res);
+      })
+      .catch(error => {
+        console.error('Ошибка при загрузке сохраненных фильмов:', error);
+      });
+  }, [location, setSaveMovies]);
+  
   useEffect(() => {
     const lastFoundMovies = JSON.parse(localStorage.getItem('lastFoundMovies'));
     const lastSearchShortFilmChecked = JSON.parse(localStorage.getItem('lastSearchShortFilmChecked'));
@@ -27,7 +41,7 @@ export default function MoviesCardList({
   }, [localStorage.getItem('lastFoundMovies'), localStorage.getItem('lastSearchShortFilmChecked'), moviesToLoad]);
 
   let resizeTimeout = null;
-
+  
   useEffect(() => {
     updateRows();
     window.addEventListener('resize', handleResize);

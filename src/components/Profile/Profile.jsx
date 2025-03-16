@@ -8,12 +8,22 @@ export default function Profile({ signOut, onUpdateUser }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isNameValid, setIsNameValid] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isValid, setIsValid] = useState(false);
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
     setName(currentUser.name);
     setEmail(currentUser.email);
   }, [currentUser]);
+
+  useEffect(() => {
+    setIsValid(isNameValid && isEmailValid);
+  }, [isNameValid, isEmailValid]);
+
+  useEffect(() => {
+    const isDataChanged = name !== currentUser.name || email !== currentUser.email;
+    setIsValid(isDataChanged && isNameValid && isEmailValid);
+  }, [name, email, currentUser.name, currentUser.email, isNameValid, isEmailValid]);
 
   function handleNameChange(e) {
     const value = e.target.value;
@@ -31,7 +41,7 @@ export default function Profile({ signOut, onUpdateUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (isNameValid && isEmailValid) {
+    if (isValid) {
       onUpdateUser({
         name: name,
         email: email,
@@ -74,11 +84,17 @@ export default function Profile({ signOut, onUpdateUser }) {
         </div>
       </form>
       {isEditing ? (
-        <button onClick={handleSubmit} className='profile__edit-button link'>Сохранить</button>
+        <>
+          <button onClick={handleSubmit} className={`profile__save-button link ${!isValid && 'profile__save-button_disabled'}`} disabled={!isValid}>
+            Сохранить
+          </button>
+        </>
       ) : (
-        <button onClick={() => setIsEditing(true)} className='profile__edit-button link' disabled={isEditing}>Редактировать</button>
+        <>
+          <button onClick={() => setIsEditing(true)} className='profile__edit-button link' disabled={isEditing}>Редактировать</button>
+          <Link to="/" className='profile__exit-button link' onClick={signOut}>Выйти из аккаунта</Link>
+        </>
       )}
-      <Link to="/" className='profile__exit-button link' onClick={signOut}>Выйти из аккаунта</Link>
     </div>
   );
 }
