@@ -2,7 +2,7 @@
   height: 444px;
   background-color: rgba(250, 250, 250, 1);
   padding: 110px 70px 100px;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .about-me__title {
@@ -14,14 +14,14 @@
   line-height: 27px;
   letter-spacing: -0.04em;
   text-align: left;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .about-me__main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .about-me__description {
@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   padding-right: 5px;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .about-me__description-title {
@@ -40,7 +40,7 @@
   letter-spacing: -0.04em;
   text-align: left;
   margin: 0 0 18px;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .about-me__description-mark {
@@ -49,7 +49,7 @@
   line-height: 20px;
   text-align: left;
   margin: 0 0 26px;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .about-me__description-text {
@@ -58,7 +58,7 @@
   line-height: 22px;
   text-align: left;
   margin: 0 0 99px;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .about-me__link {
@@ -68,16 +68,16 @@
   text-align: left;
   text-decoration: none;
   color: rgba(0, 0, 0, 1);
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .about-me__photo {
-  background-image: url('../../../images/1_1.jpg');
+  background-image: url("../../../images/1_1.jpg");
   width: 270px;
   height: 327px;
   border-radius: 10px;
   background-size: cover;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 @media screen and (max-width: 1010px) {
@@ -96,7 +96,6 @@
   .about-me__title {
     font-size: 22px;
     line-height: 27px;
-    
   }
 
   .about-me__description {
@@ -126,14 +125,14 @@
 
   .about-me__photo {
     display: block;
-    width: 33.20vw;
+    width: 33.2vw;
     height: 39.97vw;
   }
 }
 
 @media screen and (max-width: 700px) {
   .about-me__photo {
-    min-width: 33.20vw;
+    min-width: 33.2vw;
   }
 }
 
@@ -168,7 +167,7 @@
   .about-me__description-mark {
     height: 16px;
     font-size: 11px;
-    line-height: 16px;    
+    line-height: 16px;
   }
 
   .about-me__description-text {
